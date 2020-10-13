@@ -1,7 +1,7 @@
 {
-  "name": "react-boilerplate",
+  "name": "Pokedex",
   "version": "1.0.0",
-  "description": "A simple boilerplate for react development",
+  "description": "The web application of Pokédex using React",
   "main": "index.js",
   "author": "Karen Hong",
   "license": "MIT",
