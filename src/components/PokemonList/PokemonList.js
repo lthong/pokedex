@@ -1,34 +1,28 @@
-import React, { useEffect, useMemo, useCallback } from 'react';
+import React, { useEffect, useMemo, useCallback, useState } from 'react';
+import Button from '@material-ui/core/Button';
 
-const PokemonList = ({ getPokemonById, pokemons }) => {
-  const total = useMemo(() => pokemons.size || 0, [pokemons]);
-  useEffect(() => {
-    const getData = async () => {
-      for (let id = 1; id <= 20; id++) {
-        await getPokemonById(id);
-      }
-    };
-    getData();
-  }, []);
+const PokemonList = ({ getPokemonNames, pokemonNames }) => {
+  const [loading, setLoading] = useState(false);
 
   const onGetMoreData = useCallback(() => {
-    const getData = async () => {
-      for (let id = total + 1; id <= total + 10; id++) {
-        await getPokemonById(id);
-      }
-    };
-    getData();
-  }, [total, getPokemonById]);
+    setLoading(true);
+    const offset = pokemonNames.size;
+    getPokemonNames({ offset, limit: 10 }, () => {
+      setLoading(false);
+    });
+  }, [pokemonNames, getPokemonNames]);
+
+  useEffect(() => {
+    onGetMoreData();
+  }, []);
 
   return (
     <div className='pokedex-list'>
       <div className='content'>
-        {pokemons.map((data) => {
-          const id = data.get('id');
-          const name = data.get('name');
-          const type = data.getIn(['types', 0, 'type', 'name'], '');
+        {pokemonNames.map((name, index) => {
+          const id = index + 1;
           return (
-            <div key={id} className={`pokemon ${type}`}>
+            <div key={id} className='pokemon'>
               <div className='img-container'>
                 <img
                   src={`https://pokeres.bastionbot.org/images/pokemon/${id}.png`}
@@ -38,18 +32,20 @@ const PokemonList = ({ getPokemonById, pokemons }) => {
               <div className='info'>
                 <span className='number'>{id.toString().padStart(3, '0')}</span>
                 <h3 className='name'>{name}</h3>
-                <small className='type'>
-                  Type: <span>{type}</span>
-                </small>
               </div>
             </div>
           );
         })}
       </div>
-      {/* TODO: handle double click */}
-      <div className='more' onClick={onGetMoreData}>
+      {loading && '...Loading'}
+      <Button
+        className='more'
+        variant='contained'
+        onClick={onGetMoreData}
+        disabled={loading}
+      >
         More
-      </div>
+      </Button>
     </div>
   );
 };

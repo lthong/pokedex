@@ -1,12 +1,12 @@
 import { connect } from 'react-redux';
-import { getPokemonById } from 'actions/pokemon';
+import { getPokemonNames } from 'actions/pokemon';
 import PokemonList from 'components/PokemonList';
 
 const PokemonListContainer = connect(
   (state) => ({
-    pokemons: state.pokemon.pokemons,
+    pokemonNames: state.pokemon.pokemonNames,
   }),
-  { getPokemonById }
+  { getPokemonNames }
 )(PokemonList);
 
 export default PokemonListContainer;
