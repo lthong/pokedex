@@ -1,6 +1,6 @@
 import axios from 'axios';
 import queryString from 'query-string';
-import * as cons from 'constants/pokemon';
+import * as cons from '@/constants/pokemon';
 
 export const getPokemonNames = (searchData, cb) => (dispatch) => {
   const query = queryString.stringify(searchData);

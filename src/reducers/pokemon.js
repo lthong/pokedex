@@ -1,4 +1,4 @@
-import * as cons from 'constants/pokemon';
+import * as cons from '@/constants/pokemon';
 import Im from 'immutable';
 
 const initState = {

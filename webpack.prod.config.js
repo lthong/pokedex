@@ -80,12 +80,7 @@ module.exports = {
   ],
   resolve: {
     alias: {
-      actions: resolve(__dirname, 'src/actions/'),
-      components: resolve(__dirname, 'src/components/'),
-      constants: resolve(__dirname, 'src/constants/'),
-      containers: resolve(__dirname, 'src/containers/'),
-      reducers: resolve(__dirname, 'src/reducers/'),
-      stylesheet: resolve(__dirname, 'src/stylesheet/'),
+      '@': resolve(__dirname, 'src'),
     },
   },
 };
