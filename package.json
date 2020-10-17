@@ -81,6 +81,20 @@
     "rules": {
       "react/prop-types": "off",
       "no-unused-vars": "warn"
-    }
+    },
+    "settings": {
+      "react": {
+        "version": "detect"
+      }
+    },
+    "env": {
+      "browser": true,
+      "es6": true,
+      "node": true,
+      "jest": true
+    },
+    "plugins": [
+      "react"
+    ]
   }
 }
