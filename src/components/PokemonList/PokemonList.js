@@ -1,7 +1,6 @@
 import React, { useEffect, useCallback, useState } from 'react';
 import PropTypes from 'prop-types';
 import ImPropTypes from 'react-immutable-proptypes';
-import Button from '@material-ui/core/Button';
 
 const PokemonList = ({ getPokemonNames, pokemonNames }) => {
   const [loading, setLoading] = useState(false);
@@ -42,14 +41,9 @@ const PokemonList = ({ getPokemonNames, pokemonNames }) => {
         })}
       </div>
       {loading && '...Loading'}
-      <Button
-        className='more'
-        variant='contained'
-        onClick={onGetMoreData}
-        disabled={loading}
-      >
+      <div className='more' onClick={onGetMoreData} disabled={loading}>
         More
-      </Button>
+      </div>
     </div>
   );
 };
