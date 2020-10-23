@@ -15,9 +15,8 @@ const PokemonList = ({ getPokemonNames, pokemonNames }) => {
 
   useEffect(() => {
     onGetMoreData();
-    /* eslint-disable */
+    // eslint-disable-next-line
   }, []);
-  /* eslint-enable */
 
   return (
     <div className='pokedex-list'>
