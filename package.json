@@ -1,5 +1,5 @@
 {
-  "name": "Pokedex",
+  "name": "pokedex",
   "version": "1.0.0",
   "description": "The web application of Pokédex using React",
   "main": "index.js",

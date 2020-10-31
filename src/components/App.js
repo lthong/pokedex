@@ -1,12 +1,13 @@
 import React from 'react';
-import PokemonListContainer from '@/containers/PokemonListContainer';
+import { BrowserRouter, Route } from 'react-router-dom';
+import { PokemonListContainer } from '@/containers';
 import '@/stylesheet/app.scss';
 
 const App = () => {
   return (
-    <div>
-      <PokemonListContainer />
-    </div>
+    <BrowserRouter>
+      <Route exact path='/' component={PokemonListContainer} />
+    </BrowserRouter>
   );
 };
 
