@@ -27,7 +27,8 @@ const PokemonList = ({ getPokemonNames, pokemonNames }) => {
             <div key={id} className='pokemon'>
               <div className='img-container'>
                 <img
-                  src={`https://pokeres.bastionbot.org/images/pokemon/${id}.png`}
+                  // src={`https://pokeres.bastionbot.org/images/pokemon/${id}.png`}
+                  src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${id}.png`}
                   alt={name}
                 />
               </div>
