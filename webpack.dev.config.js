@@ -18,6 +18,8 @@ module.exports = {
     overlay: true,
     open: true,
     hot: true,
+    historyApiFallback: true,
+    port: 3000,
   },
   module: {
     rules: [
