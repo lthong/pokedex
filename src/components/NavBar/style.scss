@@ -1,0 +1,27 @@
+.nav-bar {
+  width: 100%;
+  display: flex;
+  overflow: hidden;
+  background-color: #464646;
+  position: fixed;
+  top: 0;
+  a {
+    color: white;
+    background-color: #464646;
+    width: 90px;
+    height: 40px;
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 500;
+  }
+  .active {
+    color: #464646;
+    background-color: wheat;
+  }
+  a:hover:not(.active) {
+    color: rgb(248, 213, 148);
+    background-color: darken($color: #464646, $amount: 5%);
+  }
+}
