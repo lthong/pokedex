@@ -14,3 +14,14 @@ export const getPokemonNames = (searchData, cb) => (dispatch) => {
       cb();
     });
 };
+
+export const getPokemonDetail = (name, cb) => (dispatch) => {
+  axios
+    .get(`https://pokeapi.co/api/v2/pokemon/${name}`)
+    .then((response) => {
+      dispatch({ type: cons.GET_POKEMON_DETAIL, payload: response.data });
+    })
+    .finally(() => {
+      cb();
+    });
+};
