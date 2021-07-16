@@ -5,9 +5,12 @@ import routerPath from '@/libraries/routerPath';
 const NavBar = () => {
   return (
     <div className='nav-bar'>
-      <NavLink exact to={routerPath.ROOT} activeClassName='active'>
-        Home
-      </NavLink>
+      <div className='left-items'>
+        <NavLink exact to={routerPath.ROOT} activeClassName='active'>
+          Pokédex
+        </NavLink>
+      </div>
+      <div className='right-items'></div>
     </div>
   );
 };
