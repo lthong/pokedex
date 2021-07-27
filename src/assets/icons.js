@@ -1,5 +1,7 @@
-import redLove from '@/assets/red-love.svg';
-import whiteLove from '@/assets/white-love.svg';
-import earth from '@/assets/earth.svg';
+import redLoveIcon from '@/assets/red-love.svg';
+import whiteLoveIcon from '@/assets/white-love.svg';
+import earthIcon from '@/assets/earth.svg';
+import arrowIcon from '@/assets/arrow.svg';
+import searchIcon from '@/assets/search.svg';
 
-export { redLove, whiteLove, earth };
+export { redLoveIcon, whiteLoveIcon, earthIcon, arrowIcon, searchIcon };
