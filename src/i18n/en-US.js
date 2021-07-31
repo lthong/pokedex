@@ -9,6 +9,7 @@ module.exports = {
     weight: 'Weight',
     types: 'Type',
     category: 'Category',
+    ability: 'Ability',
     states: 'States',
     hp: 'HP',
     attack: 'Attack',
