@@ -1,0 +1,352 @@
+@import '@/stylesheet/variable';
+
+.pokedex-detail {
+  padding-top: 60px;
+  .title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .name {
+      font-size: 20px;
+      font-weight: 500;
+      letter-spacing: 1px;
+      margin-right: 10px;
+      color: #464646;
+      &:first-letter {
+        text-transform: uppercase;
+      }
+    }
+    .id {
+      font-size: 16px;
+      color: #aaa;
+    }
+  }
+  .pokemon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    &.fire {
+      .img-container {
+        background-color: lighten($color: $fireTypeColor, $amount: 30%);
+        border: 3px solid $fireTypeColor;
+      }
+    }
+    &.grass {
+      .img-container {
+        background-color: lighten($color: $grassTypeColor, $amount: 40%);
+        border: 3px solid $grassTypeColor;
+      }
+    }
+    &.electric {
+      .img-container {
+        background-color: lighten($color: $electricTypeColor, $amount: 30%);
+        border: 3px solid $electricTypeColor;
+      }
+    }
+    &.water {
+      .img-container {
+        background-color: lighten($color: $waterTypeColor, $amount: 30%);
+        border: 3px solid $waterTypeColor;
+      }
+    }
+    &.ground {
+      .img-container {
+        background-color: lighten($color: $groundTypeColor, $amount: 10%);
+        border: 3px solid $groundTypeColor;
+      }
+    }
+    &.rock {
+      .img-container {
+        background-color: lighten($color: $rockTypeColor, $amount: 30%);
+        border: 3px solid $rockTypeColor;
+      }
+    }
+    &.fairy {
+      .img-container {
+        background-color: lighten($color: $fairyTypeColor, $amount: 10%);
+        border: 3px solid $fairyTypeColor;
+      }
+    }
+    &.poison {
+      .img-container {
+        background-color: lighten($color: $poisonTypeColor, $amount: 10%);
+        border: 3px solid $poisonTypeColor;
+      }
+    }
+    &.bug {
+      .img-container {
+        background-color: lighten($color: $bugTypeColor, $amount: 30%);
+        border: 3px solid $bugTypeColor;
+      }
+    }
+    &.dragon {
+      .img-container {
+        background-color: lighten($color: $dragonTypeColor, $amount: 10%);
+        border: 3px solid $dragonTypeColor;
+      }
+    }
+    &.psychic {
+      .img-container {
+        background-color: lighten($color: $psychicTypeColor, $amount: 10%);
+        border: 3px solid $psychicTypeColor;
+      }
+    }
+    &.flying {
+      .img-container {
+        background-color: lighten($color: $flyingTypeColor, $amount: 10%);
+        border: 3px solid $flyingTypeColor;
+      }
+    }
+    &.fighting {
+      .img-container {
+        background-color: lighten($color: $fightingTypeColor, $amount: 30%);
+        border: 3px solid $fightingTypeColor;
+      }
+    }
+    &.normal {
+      .img-container {
+        background-color: lighten($color: $normalTypeColor, $amount: 30%);
+        border: 3px solid $normalTypeColor;
+      }
+    }
+    &.ice {
+      .img-container {
+        background-color: lighten($color: $iceTypeColor, $amount: 30%);
+        border: 3px solid $iceTypeColor;
+      }
+    }
+    &.ghost {
+      .img-container {
+        background-color: lighten($color: $ghostTypeColor, $amount: 10%);
+        border: 3px solid $ghostTypeColor;
+      }
+    }
+    &.steel {
+      .img-container {
+        background-color: lighten($color: $steelTypeColor, $amount: 10%);
+        border: 3px solid $steelTypeColor;
+      }
+    }
+    &.dark {
+      .img-container {
+        background-color: lighten($color: $darkTypeColor, $amount: 30%);
+        border: 3px solid $darkTypeColor;
+      }
+    }
+    .data-box {
+      width: 300px;
+      min-height: 450px;
+      margin: 5px 10px 30px;
+      border: 1px solid #aaa;
+      border-radius: 10px;
+      padding: 20px 15px;
+      background-color: rgba(255, 255, 255, 0.3);
+      box-shadow: 3px 3px 10px #ccc;
+      .block {
+        width: 100%;
+        margin-bottom: 20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+        .save-my-poke-btn {
+          top: -10px;
+        }
+        .img-container {
+          width: 150px;
+          height: 150px;
+          border-radius: 100%;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          .poke-photo {
+            width: 90%;
+            height: 90%;
+            border-radius: 100%;
+          }
+        }
+      }
+      .row {
+        display: flex;
+        margin-bottom: 10px;
+        .col-1-2 {
+          width: 45%;
+        }
+        .col-1-1 {
+          width: 100%;
+        }
+      }
+      .label {
+        font-size: 15px;
+        font-weight: 500;
+        color: rgb(25, 10, 155, 0.8);
+        &:first-letter {
+          text-transform: uppercase;
+        }
+      }
+      .content {
+        width: 90%;
+        margin: 8px 0 8px 10px;
+        display: flex;
+        flex-wrap: wrap;
+        font-size: 14px;
+        color: #555;
+        white-space: nowrap;
+        .type {
+          width: 45%;
+          border-radius: 30px;
+          padding: 3px 8px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          border: 1px solid rgba(66, 66, 66, 0.2);
+          letter-spacing: 1px;
+          margin-right: 5px;
+          &:first-letter {
+            text-transform: uppercase;
+          }
+          &.fire {
+            background-color: $fireTypeColor;
+          }
+          &.grass {
+            background-color: $grassTypeColor;
+          }
+          &.electric {
+            background-color: $electricTypeColor;
+          }
+          &.water {
+            background-color: $waterTypeColor;
+          }
+          &.ground {
+            background-color: $groundTypeColor;
+          }
+          &.rock {
+            background-color: $rockTypeColor;
+          }
+          &.fairy {
+            background-color: $fairyTypeColor;
+          }
+          &.poison {
+            background-color: $poisonTypeColor;
+          }
+          &.bug {
+            background-color: $bugTypeColor;
+          }
+          &.dragon {
+            background-color: $dragonTypeColor;
+          }
+          &.psychic {
+            background-color: $psychicTypeColor;
+          }
+          &.flying {
+            background-color: $flyingTypeColor;
+          }
+          &.fighting {
+            background-color: $fightingTypeColor;
+          }
+          &.normal {
+            background-color: $normalTypeColor;
+          }
+          &.ice {
+            background-color: $iceTypeColor;
+          }
+          &.ghost {
+            background-color: $ghostTypeColor;
+          }
+          &.steel {
+            background-color: $steelTypeColor;
+          }
+          &.dark {
+            background-color: $darkTypeColor;
+          }
+        }
+        &.desc {
+          white-space: normal;
+          line-height: 1.5;
+          text-align: justify;
+        }
+        .state {
+          width: 100%;
+          display: flex;
+          align-items: center;
+          margin: 5px 0;
+          .label {
+            font-size: 12px;
+            width: 40%;
+            display: flex;
+            align-items: center;
+          }
+          .value {
+            position: relative;
+            font-size: 10px;
+            margin-left: 5%;
+            border-radius: 8px;
+            width: 55%;
+            box-shadow: 3px 3px 5px #ddd;
+            box-sizing: border-box;
+            border: 1px solid #777;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 3px 0;
+            background-color: transparent;
+            span {
+              z-index: 1;
+            }
+            .bar {
+              position: absolute;
+              left: 0;
+              opacity: 0.6;
+              height: 101%;
+              border-radius: 8px 0 0 8px;
+              box-sizing: border-box;
+              width: 0;
+              transition: width 0.5s;
+              &.full {
+                border-radius: inherit;
+              }
+            }
+          }
+          &:nth-child(1) .bar {
+            background-color: #fd5959;
+          }
+          &:nth-child(2) .bar {
+            background-color: #ffb641;
+          }
+          &:nth-child(3) .bar {
+            background-color: #35be16;
+          }
+          &:nth-child(4) .bar {
+            background-color: #03b2f7;
+          }
+          &:nth-child(5) .bar {
+            background-color: #4c89de;
+          }
+          &:nth-child(6) .bar {
+            background-color: #8943de;
+          }
+        }
+      }
+    }
+    .arrow-btn {
+      width: 35px;
+      height: 35px;
+      filter: invert(0.6);
+      cursor: pointer;
+      &:hover:not(.disabled) {
+        filter: invert(0.3);
+      }
+      &.left {
+        margin-right: 20px;
+        transform: rotateY(180deg);
+      }
+      &.right {
+        margin-left: 20px;
+      }
+      &.disabled {
+        cursor: not-allowed;
+      }
+    }
+  }
+}
