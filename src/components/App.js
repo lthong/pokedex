@@ -1,12 +1,20 @@
 import React from 'react';
 import { BrowserRouter, Route } from 'react-router-dom';
-import { PokemonListContainer } from '@/containers';
+import { PokemonListContainer, PokemonDetailContainer } from '@/containers';
+import NavBar from '@/components/NavBar';
+import routerPath from '@/libraries/routerPath';
 import '@/stylesheet/app.scss';
 
 const App = () => {
   return (
     <BrowserRouter>
-      <Route exact path='/' component={PokemonListContainer} />
+      <NavBar />
+      <Route exact path={routerPath.ROOT}>
+        <PokemonListContainer />
+      </Route>
+      <Route exact path={routerPath.DETAIL}>
+        <PokemonDetailContainer />
+      </Route>
     </BrowserRouter>
   );
 };
