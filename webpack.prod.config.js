@@ -6,6 +6,8 @@ const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 // const BundleAnalyzerPlugin = require('webpack-bundle-analyzer')
 //   .BundleAnalyzerPlugin;
 
+const publicPath = '/pokedex/';
+
 module.exports = {
   mode: 'production',
   entry: {
@@ -15,6 +17,7 @@ module.exports = {
     filename: 'static/js/[name].[contenthash:8].js',
     chunkFilename: 'static/js/[name].[contenthash:8].chunk.js',
     path: resolve(__dirname, 'build'),
+    publicPath,
   },
   module: {
     rules: [
@@ -73,6 +76,7 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: resolve(__dirname, 'public/index.html'),
       favicon: resolve(__dirname, 'public/favicon.ico'),
+      publicPath,
     }),
     new MiniCssExtractPlugin({
       filename: 'static/css/[name].[contenthash:8].css',

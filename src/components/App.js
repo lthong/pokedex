@@ -7,7 +7,7 @@ import '@/stylesheet/app.scss';
 
 const App = () => {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename={location.pathname}>
       <NavBar />
       <Route exact path={routerPath.ROOT}>
         <PokemonListContainer />
