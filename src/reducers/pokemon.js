@@ -1,9 +1,14 @@
 import * as cons from '@/constants/pokemon';
-import { List, Map, fromJS } from 'immutable';
+import { List, fromJS } from 'immutable';
 
 const initState = {
   pokemonNames: List(),
-  pokemonDetail: Map(),
+  pokemonDetail: fromJS({
+    basicInfo: {},
+    species: {},
+    abilities: {},
+  }),
+  myPokeIds: List(),
 };
 
 export default (state = initState, action) => {
@@ -21,6 +26,13 @@ export default (state = initState, action) => {
       return {
         ...state,
         pokemonDetail,
+      };
+    }
+
+    case cons.UPDATE_MY_POKE_IDS: {
+      return {
+        ...state,
+        myPokeIds: action.payload,
       };
     }
 

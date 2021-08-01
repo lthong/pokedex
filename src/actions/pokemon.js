@@ -18,19 +18,27 @@ export const getPokemonNames = (searchData, cb) => (dispatch) => {
     });
 };
 
-export const getPokemonDetail = ({ name, id }, cb) => (dispatch) => {
+export const getPokemonDetail = ({ id }, cb) => (dispatch) => {
   Promise.all([
-    axios.get(`https://pokeapi.co/api/v2/pokemon/${name}`),
-    axios.get(`https://pokeapi.co/api/v2/pokemon-species/${name}`),
-    axios.get(`https://pokeapi.co/api/v2/evolution-chain/${id}`),
+    axios.get(`https://pokeapi.co/api/v2/pokemon/${id}`),
+    axios.get(`https://pokeapi.co/api/v2/pokemon-species/${id}`),
   ])
     .then((response) => {
-      const payload = {
-        basicInfo: response[0]?.data || {},
-        species: response[1]?.data || {},
-        evolution: response[2]?.data || {},
-      };
-      dispatch({ type: cons.GET_POKEMON_DETAIL, payload });
+      const basicInfo = response[0]?.data || {};
+      const species = response[1]?.data || {};
+      const abilityUrl = basicInfo?.abilities[0]?.ability?.url;
+      axios
+        .get(abilityUrl)
+        .then(({ data: { names: label, flavor_text_entries: desc } }) => {
+          dispatch({
+            type: cons.GET_POKEMON_DETAIL,
+            payload: {
+              basicInfo,
+              species,
+              abilities: { label, desc },
+            },
+          });
+        });
     })
     .finally(() => {
       cb();
