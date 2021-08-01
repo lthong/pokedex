@@ -1,9 +1,12 @@
+$navBarColor: #464646;
+
 .nav-bar {
   width: 100%;
   display: flex;
   justify-content: space-between;
+  align-items: center;
   overflow: hidden;
-  background-color: #464646;
+  background-color: $navBarColor;
   position: fixed;
   top: 0;
   padding: 0 20px;
@@ -15,12 +18,80 @@
   }
   .right-items {
     display: flex;
+    align-items: center;
     justify-content: space-between;
     font-size: 14px;
   }
+  .bgm-audit {
+    display: none;
+  }
+  .voice-icon {
+    margin-right: 5px;
+    display: flex;
+    align-items: center;
+    img {
+      width: 20px;
+      height: 20px;
+      filter: invert(1);
+    }
+  }
+  .bgm-btn {
+    position: relative;
+    width: 40px;
+    height: 20px;
+    border-radius: 20px;
+    background-color: #888;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    margin-right: 20px;
+    transition: 0.3s;
+    .switch {
+      position: absolute;
+      width: 15px;
+      height: 15px;
+      border-radius: 100%;
+      background-color: white;
+      transition: 0.3s;
+      right: 22px;
+    }
+    &.open {
+      .switch {
+        background-color: #90caf9;
+        right: 3.5px;
+      }
+    }
+    &:hover {
+      background-color: #999;
+    }
+  }
+  .locale-selector {
+    display: flex;
+    align-items: center;
+    .earth-icon {
+      width: 20px;
+      height: 20px;
+      filter: invert(1);
+    }
+    select {
+      background-color: $navBarColor;
+      color: white;
+      border: 0;
+      font-size: 14px;
+      padding: 5px;
+      cursor: pointer;
+      position: relative;
+      &:focus-visible {
+        outline: 0;
+      }
+      &:hover {
+        background-color: lighten($navBarColor, 10%);
+        border-radius: 5px;
+      }
+    }
+  }
   a {
     color: white;
-    // background-color: #464646;
     height: 50px;
     padding: 0 10px;
     text-decoration: none;
@@ -34,6 +105,6 @@
   }
   a:hover:not(.active) {
     color: rgb(248, 213, 148);
-    background-color: darken($color: #464646, $amount: 10%);
+    background-color: darken($navBarColor, 10%);
   }
 }
