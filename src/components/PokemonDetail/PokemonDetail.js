@@ -173,7 +173,7 @@ const PokemonDetail = ({ getPokemonDetail, pokemonDetail }) => {
 
   return (
     <div className='pokedex-detail'>
-      {!loading ? (
+      {!loading && String(basicInfo.get('id')) === id ? (
         <>
           <div className='title'>
             <div className='name'>{t(`pokemonNames.${name}`)}</div>
