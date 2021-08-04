@@ -6,6 +6,7 @@
   "author": "Karen Hong",
   "license": "MIT",
   "private": true,
+  "homepage": "https://github.com/lthong/pokedex",
   "dependencies": {
     "@babel/core": "^7.11.4",
     "@babel/plugin-transform-runtime": "^7.14.5",
