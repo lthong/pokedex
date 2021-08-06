@@ -1,17 +1,15 @@
-import React, { useEffect, useCallback, useState, useMemo } from 'react';
-import PropTypes from 'prop-types';
-import ImPropTypes from 'react-immutable-proptypes';
+import React, { useCallback, useState, useMemo } from 'react';
 import { useHistory } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import SaveMyPokeBtn from '@/components/SaveMyPokeBtn';
 import routerPath from '@/libraries/routerPath';
-import { POKEMON_MAX_AMOUNT } from '@/libraries/constants';
+// import { POKEMON_MAX_AMOUNT } from '@/libraries/constants';
 import { searchIcon } from '@/assets/icons';
+import pokemonNames from '@/resource/pokemonData';
 
-const PokemonList = ({ getPokemonNames, pokemonNames }) => {
+const PokemonList = () => {
   const { t } = useTranslation();
   const history = useHistory();
-  const [loading, setLoading] = useState(false);
   const [searchKeyword, setSearchKeyword] = useState('');
   const pokeData = useMemo(() => {
     const keyword = searchKeyword.toLowerCase();
@@ -23,7 +21,7 @@ const PokemonList = ({ getPokemonNames, pokemonNames }) => {
             t(`pokemonNames.${item.get('name')}`).includes(keyword)
         )
       : pokemonNames;
-  }, [searchKeyword, pokemonNames, t]);
+  }, [searchKeyword, t]);
 
   const onCardClick = useCallback(
     ({ id }) => {
@@ -32,24 +30,9 @@ const PokemonList = ({ getPokemonNames, pokemonNames }) => {
     [history]
   );
 
-  const getData = useCallback(() => {
-    const offset = pokemonNames.size;
-    if (offset < POKEMON_MAX_AMOUNT) {
-      setLoading(true);
-      getPokemonNames({ offset, limit: POKEMON_MAX_AMOUNT }, () => {
-        setLoading(false);
-      });
-    }
-  }, [pokemonNames, getPokemonNames]);
-
   const onSearchValueChange = useCallback((event) => {
     const { value } = event.target;
     setSearchKeyword(value);
-  }, []);
-
-  useEffect(() => {
-    getData();
-    // eslint-disable-next-line
   }, []);
 
   return (
@@ -95,14 +78,8 @@ const PokemonList = ({ getPokemonNames, pokemonNames }) => {
           );
         })}
       </div>
-      {loading && t('common.loading')}
     </div>
   );
-};
-
-PokemonList.propTypes = {
-  getPokemonNames: PropTypes.func,
-  pokemonNames: ImPropTypes.list,
 };
 
 export default PokemonList;

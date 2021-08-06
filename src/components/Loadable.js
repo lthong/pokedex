@@ -1,4 +1,3 @@
-import React from 'react';
 import Loadable from 'react-loadable';
 
 const Loading = (props) => {
@@ -9,11 +8,9 @@ const Loading = (props) => {
   }
 };
 
-export const PokemonListContainer = Loadable({
+export const PokemonList = Loadable({
   loader: () =>
-    import(
-      /* webpackChunkName: 'PokemonList' */ '@/containers/PokemonListContainer'
-    ),
+    import(/* webpackChunkName: 'PokemonList' */ '@/components/PokemonList'),
   loading: Loading,
 });
 

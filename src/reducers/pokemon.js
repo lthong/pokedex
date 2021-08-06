@@ -13,13 +13,13 @@ const initState = {
 
 export default (state = initState, action) => {
   switch (action.type) {
-    case cons.GET_POKEMON_NAMES: {
-      const pokemonNames = state.pokemonNames.concat(fromJS(action.payload));
-      return {
-        ...state,
-        pokemonNames,
-      };
-    }
+    // case cons.GET_POKEMON_NAMES: {
+    //   const pokemonNames = state.pokemonNames.concat(fromJS(action.payload));
+    //   return {
+    //     ...state,
+    //     pokemonNames,
+    //   };
+    // }
 
     case cons.GET_POKEMON_DETAIL: {
       const pokemonDetail = fromJS(action.payload);

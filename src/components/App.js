@@ -1,6 +1,6 @@
 import React from 'react';
 import { BrowserRouter, Route } from 'react-router-dom';
-import { PokemonListContainer, PokemonDetailContainer } from '@/containers';
+import { PokemonList, PokemonDetailContainer } from '@/components/Loadable';
 import NavBar from '@/components/NavBar';
 import routerPath from '@/libraries/routerPath';
 import '@/stylesheet/app.scss';
@@ -10,7 +10,7 @@ const App = () => {
     <BrowserRouter basename={process.env.PUBLIC_PATH}>
       <NavBar />
       <Route exact path={routerPath.ROOT}>
-        <PokemonListContainer />
+        <PokemonList />
       </Route>
       <Route path={routerPath.DETAIL}>
         <PokemonDetailContainer />
