@@ -1,3 +1,4 @@
+const webpack = require('webpack');
 const { resolve } = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
@@ -5,8 +6,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 // const BundleAnalyzerPlugin = require('webpack-bundle-analyzer')
 //   .BundleAnalyzerPlugin;
-
-const publicPath = '/pokedex/';
+const PUBLIC_PATH = '/pokedex/';
 
 module.exports = {
   mode: 'production',
@@ -17,7 +17,7 @@ module.exports = {
     filename: 'static/js/[name].[contenthash:8].js',
     chunkFilename: 'static/js/[name].[contenthash:8].chunk.js',
     path: resolve(__dirname, 'build'),
-    publicPath,
+    publicPath: PUBLIC_PATH,
   },
   module: {
     rules: [
@@ -76,7 +76,10 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: resolve(__dirname, 'public/index.html'),
       favicon: resolve(__dirname, 'public/favicon.ico'),
-      publicPath,
+      publicPath: PUBLIC_PATH,
+    }),
+    new webpack.DefinePlugin({
+      'process.env.PUBLIC_PATH': JSON.stringify(PUBLIC_PATH),
     }),
     new MiniCssExtractPlugin({
       filename: 'static/css/[name].[contenthash:8].css',
