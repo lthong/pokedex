@@ -5,6 +5,7 @@ import arrowIcon from '@/assets/arrow.svg';
 import searchIcon from '@/assets/search.svg';
 import voiceOpenIcon from '@/assets/voice-open.svg';
 import voiceClosedIcon from '@/assets/voice-closed.svg';
+import githubIcon from '@/assets/github.svg';
 
 export {
   redLoveIcon,
@@ -14,4 +15,5 @@ export {
   searchIcon,
   voiceOpenIcon,
   voiceClosedIcon,
+  githubIcon,
 };

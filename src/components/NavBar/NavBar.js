@@ -1,14 +1,21 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useHistory } from 'react-router-dom';
 import i18next from 'i18next';
 import clsx from 'clsx';
 import { useTranslation } from 'react-i18next';
 import routerPath from '@/libraries/routerPath';
-import { earthIcon, voiceClosedIcon, voiceOpenIcon } from '@/assets/icons';
+import {
+  earthIcon,
+  voiceClosedIcon,
+  voiceOpenIcon,
+  githubIcon,
+} from '@/assets/icons';
 import bgm from '@/assets/bg.mp3';
+import { homepage } from '../../../package.json';
 
 const NavBar = () => {
   const { t } = useTranslation();
+  const history = useHistory();
   const bmgRef = useRef(null);
   const [isBgmOpen, setIsBgmOpen] = useState(false);
 
@@ -37,20 +44,22 @@ const NavBar = () => {
           loop
           controls
         />
-        <div className='voice-icon'>
-          {isBgmOpen ? (
-            <img src={voiceOpenIcon} alt='voice-open' />
-          ) : (
-            <img src={voiceClosedIcon} alt='voice-closed' />
-          )}
-        </div>
         <div
-          className={clsx('bgm-btn', { open: isBgmOpen })}
+          className='bgm-switch'
           onClick={() => {
             setIsBgmOpen((preState) => !preState);
           }}
         >
-          <div className='switch' />
+          <div className='voice-icon'>
+            {isBgmOpen ? (
+              <img src={voiceOpenIcon} alt='voice-open' />
+            ) : (
+              <img src={voiceClosedIcon} alt='voice-closed' />
+            )}
+          </div>
+          <div className={clsx('bgm-btn', { open: isBgmOpen })}>
+            <div className='switch' />
+          </div>
         </div>
         <div className='locale-selector'>
           <img className='earth-icon' src={earthIcon} alt='earth-icon' />
@@ -65,6 +74,14 @@ const NavBar = () => {
             <option value='en'>{t('common.en')}</option>
           </select>
         </div>
+        <img
+          className='github-icon'
+          src={githubIcon}
+          alt='github-icon'
+          onClick={() => {
+            location.replace(homepage);
+          }}
+        />
       </div>
     </div>
   );

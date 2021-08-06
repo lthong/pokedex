@@ -25,44 +25,47 @@ $navBarColor: #464646;
   .bgm-audit {
     display: none;
   }
-  .voice-icon {
-    margin-right: 5px;
+  .bgm-switch {
     display: flex;
-    align-items: center;
-    img {
-      width: 20px;
-      height: 20px;
-      filter: invert(1);
-    }
-  }
-  .bgm-btn {
-    position: relative;
-    width: 40px;
-    height: 20px;
-    border-radius: 20px;
-    background-color: #888;
-    display: flex;
-    align-items: center;
     cursor: pointer;
-    margin-right: 20px;
-    transition: 0.3s;
-    .switch {
-      position: absolute;
-      width: 15px;
-      height: 15px;
-      border-radius: 100%;
-      background-color: white;
-      transition: 0.3s;
-      right: 22px;
-    }
-    &.open {
-      .switch {
-        background-color: #90caf9;
-        right: 3.5px;
+    .voice-icon {
+      margin-right: 5px;
+      display: flex;
+      align-items: center;
+      img {
+        width: 20px;
+        height: 20px;
+        filter: invert(1);
       }
     }
-    &:hover {
-      background-color: #999;
+    .bgm-btn {
+      position: relative;
+      width: 40px;
+      height: 20px;
+      border-radius: 20px;
+      background-color: #888;
+      display: flex;
+      align-items: center;
+      margin-right: 20px;
+      transition: 0.3s;
+      .switch {
+        position: absolute;
+        width: 15px;
+        height: 15px;
+        border-radius: 100%;
+        background-color: white;
+        transition: 0.3s;
+        right: 22px;
+      }
+      &.open {
+        .switch {
+          background-color: #90caf9;
+          right: 3.5px;
+        }
+      }
+      &:hover {
+        background-color: #999;
+      }
     }
   }
   .locale-selector {
@@ -88,6 +91,16 @@ $navBarColor: #464646;
         background-color: lighten($navBarColor, 10%);
         border-radius: 5px;
       }
+    }
+  }
+  .github-icon {
+    width: 25px;
+    height: 25px;
+    margin-left: 10px;
+    filter: invert(1);
+    cursor: pointer;
+    &:hover {
+      filter: invert(0.9);
     }
   }
   a {
