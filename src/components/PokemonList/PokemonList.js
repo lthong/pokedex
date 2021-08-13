@@ -3,7 +3,6 @@ import { useHistory } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import SaveMyPokeBtn from '@/components/SaveMyPokeBtn';
 import routerPath from '@/libraries/routerPath';
-// import { POKEMON_MAX_AMOUNT } from '@/libraries/constants';
 import { searchIcon } from '@/assets/icons';
 import pokemonNames from '@/resource/pokemonData';
 
@@ -62,7 +61,6 @@ const PokemonList = () => {
             >
               <div className='img-container'>
                 <img
-                  // src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${id}.png`}
                   src={`https://assets.pokemon.com/assets/cms2/img/pokedex/full/${id
                     .toString()
                     .padStart(3, '0')}.png`}
