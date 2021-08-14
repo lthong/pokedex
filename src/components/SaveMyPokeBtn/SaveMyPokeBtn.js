@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, useMemo } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import clsx from 'clsx';
 import { updateMyPokeIds } from '@/actions/pokemon';
@@ -8,7 +8,17 @@ const SaveMyPokeBtn = ({ id: idValue }) => {
   const id = String(idValue);
   const dispatch = useDispatch();
   const myPokeIds = useSelector((state) => state.pokemon.myPokeIds);
-
+  const className = useMemo(
+    () =>
+      clsx('save-my-poke-btn', {
+        active: myPokeIds.includes(id),
+      }),
+    [id, myPokeIds]
+  );
+  const iconPath = useMemo(
+    () => (myPokeIds.includes(id) ? redLoveIcon : whiteLoveIcon),
+    [id, myPokeIds]
+  );
   const onPokeSave = useCallback(
     (event) => {
       event.stopPropagation();
@@ -19,11 +29,9 @@ const SaveMyPokeBtn = ({ id: idValue }) => {
 
   return (
     <img
-      className={clsx('save-my-poke-btn', {
-        active: myPokeIds.includes(id),
-      })}
+      className={className}
       alt='save-my-poke-btn'
-      src={myPokeIds.includes(id) ? redLoveIcon : whiteLoveIcon}
+      src={iconPath}
       onClick={(event) => {
         onPokeSave(event, id);
       }}
