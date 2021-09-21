@@ -17,6 +17,7 @@ import SaveMyPokeBtn from '@/components/SaveMyPokeBtn';
 import { arrowIcon } from '@/assets/icons';
 import routerPath from '@/libraries/routerPath';
 import { POKEMON_MAX_AMOUNT } from '@/libraries/constants';
+import PokemonType from '../PokemonType';
 
 const languageEnum = {
   en: 'en',
@@ -34,13 +35,15 @@ const PokemonDetail = ({ getPokemonDetail, pokemonDetail }) => {
   const [loading, setLoading] = useState(false);
   const [isStatesBarReady, setIsStatesBarReady] = useState(false);
 
-  const basicInfo = useMemo(() => pokemonDetail.get('basicInfo'), [
-    pokemonDetail,
-  ]);
+  const basicInfo = useMemo(
+    () => pokemonDetail.get('basicInfo'),
+    [pokemonDetail]
+  );
   const species = useMemo(() => pokemonDetail.get('species'), [pokemonDetail]);
-  const abilities = useMemo(() => pokemonDetail.get('abilities'), [
-    pokemonDetail,
-  ]);
+  const abilities = useMemo(
+    () => pokemonDetail.get('abilities'),
+    [pokemonDetail]
+  );
 
   const name = useMemo(() => basicInfo.get('name'), [basicInfo]);
   const formatPokeId = useMemo(() => id.toString().padStart(3, '0'), [id]);
@@ -252,14 +255,7 @@ const PokemonDetail = ({ getPokemonDetail, pokemonDetail }) => {
                   <div className='content'>
                     {basicInfo.get('types')?.map((item) => {
                       const type = item.getIn(['type', 'name']);
-                      return (
-                        <div
-                          key={type}
-                          className={clsx('type', { [type]: true })}
-                        >
-                          {t(`common.${type}`)}
-                        </div>
-                      );
+                      return <PokemonType key={type} type={type} />;
                     })}
                   </div>
                 </div>
