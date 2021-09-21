@@ -6,6 +6,7 @@ export default {
     'zh-TW': '中文',
     en: 'English',
     search_placeholder: '寶可夢編號或名稱',
+    reset: '重置',
     loading: '...搜尋中',
     height: '身高',
     weight: '體重',

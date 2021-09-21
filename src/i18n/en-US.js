@@ -6,6 +6,7 @@ export default {
     'zh-TW': '中文',
     en: 'English',
     search_placeholder: 'Id or name of Pokemons...',
+    reset: 'Reset',
     loading: '...Loading',
     height: 'Height',
     weight: 'Weight',

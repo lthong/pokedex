@@ -1,6 +1,4 @@
-import { fromJS } from 'immutable';
-
-export default fromJS([
+export const pokemonNames = [
   { id: 1, name: 'bulbasaur', types: ['grass', 'poison'] },
   { id: 2, name: 'ivysaur', types: ['grass', 'poison'] },
   { id: 3, name: 'venusaur', types: ['grass', 'poison'] },
@@ -899,4 +897,33 @@ export default fromJS([
   { id: 896, name: 'glastrier', types: ['ice'] },
   { id: 897, name: 'spectrier', types: ['ghost'] },
   { id: 898, name: 'calyrex', types: ['psychic', 'grass'] },
-]);
+];
+
+export const pokeTypes = [
+  'grass',
+  'fire',
+  'electric',
+  'water',
+  'ground',
+  'rock',
+  'fairy',
+  'poison',
+  'bug',
+  'dragon',
+  'psychic',
+  'flying',
+  'fighting',
+  'normal',
+  'ice',
+  'ghost',
+  'steel',
+  'dark',
+];
+
+export const pokeTypeData = pokeTypes.reduce(
+  (acc, type) => ({
+    ...acc,
+    [type]: pokemonNames.filter((item) => item.types.includes(type)),
+  }),
+  {}
+);

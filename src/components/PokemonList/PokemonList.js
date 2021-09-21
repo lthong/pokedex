@@ -4,23 +4,40 @@ import { useTranslation } from 'react-i18next';
 import SaveMyPokeBtn from '@/components/SaveMyPokeBtn';
 import routerPath from '@/libraries/routerPath';
 import { searchIcon } from '@/assets/icons';
-import pokemonNames from '@/resource/pokemonData';
+import { pokemonNames, pokeTypes, pokeTypeData } from '@/resource/pokemonData';
+import PokemonType from '../PokemonType';
+import clsx from 'clsx';
 
 const PokemonList = () => {
   const { t } = useTranslation();
   const history = useHistory();
   const [searchKeyword, setSearchKeyword] = useState('');
+  const [searchType, setSearchType] = useState('');
+
   const pokeData = useMemo(() => {
     const keyword = searchKeyword.toLowerCase();
-    return keyword
-      ? pokemonNames.filter(
+    if (searchType) {
+      const data = pokeTypeData[searchType];
+      if (keyword) {
+        return data.filter(
           (item) =>
-            item.get('name').includes(keyword) ||
-            String(item.get('id')).includes(keyword) ||
-            t(`pokemonNames.${item.get('name')}`).includes(keyword)
-        )
-      : pokemonNames;
-  }, [searchKeyword, t]);
+            item.name.includes(keyword) ||
+            String(item.id).includes(keyword) ||
+            t(`pokemonNames.${item.name}`).includes(keyword)
+        );
+      }
+      return data;
+    }
+    if (keyword) {
+      return pokemonNames.filter(
+        (item) =>
+          item.name.includes(keyword) ||
+          String(item.id).includes(keyword) ||
+          t(`pokemonNames.${item.name}`).includes(keyword)
+      );
+    }
+    return pokemonNames;
+  }, [searchKeyword, searchType, t]);
 
   const onCardClick = useCallback(
     ({ id }) => {
@@ -32,6 +49,15 @@ const PokemonList = () => {
   const onSearchValueChange = useCallback((event) => {
     const { value } = event.target;
     setSearchKeyword(value);
+  }, []);
+
+  const onTypeChange = useCallback((type) => {
+    setSearchType(type);
+  }, []);
+
+  const onReset = useCallback(() => {
+    setSearchKeyword('');
+    setSearchType('');
   }, []);
 
   return (
@@ -47,10 +73,24 @@ const PokemonList = () => {
           onChange={onSearchValueChange}
           placeholder={t('common.search_placeholder')}
         />
+        <div className='reset-btn' onClick={onReset}>
+          {t('common.reset')}
+        </div>
+        <div className='poke-types'>
+          {pokeTypes.map((type) => (
+            <PokemonType
+              key={type}
+              type={type}
+              className={clsx({ active: type === searchType })}
+              onClick={() => {
+                onTypeChange(type === searchType ? '' : type);
+              }}
+            />
+          ))}
+        </div>
       </div>
       <div className='content'>
-        {pokeData.map((item) => {
-          const { name, id } = item.toJS();
+        {pokeData.map(({ name, id, types }) => {
           return (
             <div
               key={id}
@@ -71,6 +111,11 @@ const PokemonList = () => {
                 <SaveMyPokeBtn id={id} />
                 <span className='number'>{id.toString().padStart(3, '0')}</span>
                 <h3 className='name'>{t(`pokemonNames.${name}`)}</h3>
+              </div>
+              <div className='types'>
+                {types.map((type) => (
+                  <PokemonType key={type} type={type} />
+                ))}
               </div>
             </div>
           );
