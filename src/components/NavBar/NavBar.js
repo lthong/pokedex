@@ -74,14 +74,16 @@ const NavBar = () => {
             <option value='en'>{t('common.en')}</option>
           </select>
         </div>
-        <img
+        {/* hide the pokedex github icon, because the setting of X-Frame-Options is 'DENY' that will prevent to link to github, so hide the button
+        https://blog.darkthread.net/blog/iframe-clickjacking/ */}
+        {/* <img
           className='github-icon'
           src={githubIcon}
           alt='github-icon'
           onClick={() => {
             location.replace(homepage);
           }}
-        />
+        /> */}
       </div>
     </div>
   );

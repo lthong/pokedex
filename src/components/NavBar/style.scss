@@ -14,7 +14,8 @@ $navBarColor: #464646;
   z-index: 10;
   box-shadow: 0 2px 5px rgb(0 0 0 / 30%);
   .left-items {
-    font-size: 20px;
+    font-size: 1.2rem;
+    white-space: nowrap;
   }
   .right-items {
     display: flex;

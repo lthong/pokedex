@@ -63,18 +63,20 @@ const PokemonList = () => {
   return (
     <div className='pokedex-list'>
       <div className='search-field'>
-        <label htmlFor='keyword'>
-          <img src={searchIcon} alt='search-icon' />
-        </label>
-        <input
-          id='keyword'
-          className='keyword-input'
-          value={searchKeyword}
-          onChange={onSearchValueChange}
-          placeholder={t('common.search_placeholder')}
-        />
-        <div className='reset-btn' onClick={onReset}>
-          {t('common.reset')}
+        <div className='form'>
+          <label htmlFor='keyword'>
+            <img src={searchIcon} alt='search-icon' />
+          </label>
+          <input
+            id='keyword'
+            className='keyword-input'
+            value={searchKeyword}
+            onChange={onSearchValueChange}
+            placeholder={t('common.search_placeholder')}
+          />
+          <div className='reset-btn' onClick={onReset}>
+            {t('common.reset')}
+          </div>
         </div>
         <div className='poke-types'>
           {pokeTypes.map((type) => (
